@@ -18,7 +18,8 @@ import java.util.HashSet;
 public class databaseManager extends SQLiteOpenHelper {
 
     private static final String dbName = "db_IchHabNochNie";
-    private static final int dbVersion = 8;
+    // version 9: Update 12.7.
+    private static final int dbVersion = 9;
 
     private static final String tableName = "message";
     private static final String createTable = "CREATE TABLE "+tableName+"(" +

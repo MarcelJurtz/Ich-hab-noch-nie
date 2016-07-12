@@ -211,7 +211,6 @@ public class MessageHelper {
         messages.add(new Message("länger als eine Stunde Sex gehabt",date,user));
 		messages.add(new Message("Leute online auf deren Rechtschreibfehler hingewiesen",date3,user));
         messages.add(new Message("Liebeskugeln verwendet",date2,user));
-		messages.add(new Message("M&M's nach Farbe sortiert",date3,user));
         messages.add(new Message("mehr als 5 mal an einem Tag masturbiert",date2,user));
         messages.add(new Message("mehr als 10 Stellungen ausprobiert",date2,user));
         messages.add(new Message("mehrere Tage hintereinander dieselbe Unterwäsche getragen",date,user));
@@ -287,6 +286,7 @@ public class MessageHelper {
         messages.add(new Message("Sexspielzeug vor meinen Eltern versteckt",date2,user));
         messages.add(new Message("Shots aus einem Bauchnabel getrunken",date,user));
         messages.add(new Message("Silikonbrüste berührt",date2,user));
+        messages.add(new Message("Smarties nach Farbe sortiert",date3,user));
         messages.add(new Message("so getan, als ob ich betrunken wäre", date2, user));
         messages.add(new Message("so viel getrunken, dass ich nicht mehr nach Hause gefunden habe",date2,user));
         messages.add(new Message("so laut über jemanden gelästert, dass der es mitbekommen hat",date2,user));
@@ -309,7 +309,7 @@ public class MessageHelper {
         messages.add(new Message("versucht, Marihuana anzubauen",date,user));
         messages.add(new Message("versucht, mit einem gefälschten Geldschein zu bezahlen",date2,user));
         messages.add(new Message("versucht, mit meinem Partner einen Porno nachzuspielen",date2,user));
-        messages.add(new Message("versucht, vor der Polizeit wegzulaufen",date2,user));
+        messages.add(new Message("versucht, vor der Polizei wegzulaufen",date2,user));
         messages.add(new Message("Viagra genommen",date2,user));
         messages.add(new Message("vor 13 Uhr soviel getrunken, dass ich sturzbesoffen war",date2,user));
 		messages.add(new Message("vor der Schule gestanden, weil ich verpeilt hatte, dass Sonntag / Feiertag ist.",date3,user));
