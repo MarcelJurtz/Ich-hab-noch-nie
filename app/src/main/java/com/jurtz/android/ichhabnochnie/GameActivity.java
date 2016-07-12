@@ -1,0 +1,139 @@
+package com.jurtz.android.ichhabnochnie;
+
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.jurtz.android.ichhabnochnie.database.databaseManager;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class GameActivity extends AppCompatActivity {
+
+    RelativeLayout mainLayout;
+    TextView txtMessage;
+    ImageButton cmdDelete;
+
+    private SQLiteDatabase db;
+    private databaseManager dbManager;
+
+    String sql;
+    Random random;
+    String currentMessage;
+    String emptyMessage;
+
+    // Speichert sämtliche Strings
+    ArrayList<String> messages;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+        emptyMessage = "Keine Einträge vorhanden\n\n¯\\_(ツ)_/¯";
+        currentMessage = "";
+
+        // SQL-Befehl anhand Auswahl aus voriger Activity
+        Bundle data = getIntent().getExtras();
+        sql = databaseManager.SELECT_ALL_MESSAGES; // Standard
+        if(data != null)
+            sql = data.getString("sql");
+
+        // Instanziierung dbManager & Liste
+        random = new Random();
+        dbManager = new databaseManager(this);
+        messages = new ArrayList<>();
+
+        // Layout
+        mainLayout = (RelativeLayout)findViewById(R.id.layoutMain);
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentMessage = getRandomEntry(random);
+                updateMessage();
+            }
+        });
+        mainLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                finish();
+                return true;
+            }
+        });
+        txtMessage = (TextView)findViewById(R.id.txtMessage);
+        cmdDelete = (ImageButton)findViewById(R.id.cmdDel);
+        cmdDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Funktioniert zwar dank SQL auch so, aber unnötige DB-Verbindung wird bei leerem String vermieden
+                if (currentMessage != "" && currentMessage != null && currentMessage != emptyMessage) {
+                    String sql = "DELETE FROM " + databaseManager.getTableName() + " WHERE text='" + currentMessage + "'";
+
+                    // Eintrag löschen
+                    db = dbManager.getReadableDatabase();
+                    db.execSQL(sql);
+                    Toast.makeText(getApplicationContext(), "Eintrag wurde gelöscht", Toast.LENGTH_SHORT).show();
+                    // Neuen Eintrag laden
+                    currentMessage = getRandomEntry(random);
+                    updateMessage();
+                    db.close();
+                }
+            }
+        });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        db = dbManager.getReadableDatabase();
+        // Toast.makeText(getApplicationContext(), "Datenbank geöffnet", Toast.LENGTH_SHORT).show();
+
+        Cursor klassenCursor = db.rawQuery(sql,null);
+        String text;
+        String author;
+        String date;
+        if(klassenCursor.getCount() > 0) {
+            if (klassenCursor.moveToFirst()) {
+                while (klassenCursor.isAfterLast() == false) {
+                    messages.add(klassenCursor.getString(klassenCursor.getColumnIndex("text")));
+                    klassenCursor.moveToNext();
+                }
+            }
+        }
+        db.close();
+        currentMessage = getRandomEntry(random);
+        updateMessage();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        db.close();
+        // Toast.makeText(getApplicationContext(),"Datenbank geschlossen",Toast.LENGTH_SHORT).show();
+    }
+    String getRandomEntry(Random r) {
+        if(messages.size() == 0) {
+            return emptyMessage;
+        } else {
+            int index = r.nextInt(messages.size());
+            String entry = messages.get(index);
+            messages.remove(index);
+            return entry;
+        }
+    }
+
+    private void updateMessage() {
+        if(currentMessage != emptyMessage) {
+            txtMessage.setText("Ich hab noch nie "+currentMessage);
+        } else {
+            txtMessage.setText(currentMessage);
+        }
+    }
+}
