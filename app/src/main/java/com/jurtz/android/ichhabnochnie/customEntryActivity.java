@@ -69,11 +69,9 @@ public class customEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(txtCustomEntry.getText().toString().length() > 0) {
-                    if (txtCustomEntry.getText().toString().contains("'")) {
-                        Toast.makeText(getApplicationContext(), "Ungültige Eingabe", Toast.LENGTH_SHORT).show();
-                        txtCustomEntry.setText("");
-                    } else {
+
                         Date today = new Date();
+                        String text = txtCustomEntry.getText().toString().replace("'","\'");
                         Message msg = new Message(txtCustomEntry.getText().toString(), today, "CUSTOM");
                         String sql = MessageHelper.getInputCommand(msg, databaseManager.getTableName());
                         try {
@@ -82,7 +80,7 @@ public class customEntryActivity extends AppCompatActivity {
                         } catch (SQLException sqlEx) {
                             Toast.makeText(getApplicationContext(), "Fehler beim Eintrag in die Datenbank", Toast.LENGTH_SHORT).show();
                         }
-                    }
+
                     txtCustomEntry.setText("");
                 } else {
                     Toast.makeText(getApplicationContext(),"Keine Eingabe vorhanden",Toast.LENGTH_SHORT).show();
@@ -107,13 +105,5 @@ public class customEntryActivity extends AppCompatActivity {
         super.onResume();
         db = dbManager.getReadableDatabase();
         // Toast.makeText(getApplicationContext(),"DB geöffnet",Toast.LENGTH_LONG).show();
-    }
-
-    private boolean validateInput(String input) {
-        if(input.contains("'")) {
-            return false;
-        } else {
-            return true;
-        }
     }
 }
