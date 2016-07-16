@@ -18,12 +18,6 @@ public class Message {
         this.author = author;
     }
 
-    public Message(String text, Date date, String author) {
-        this.text = text;
-        this.author = author;
-        this.date = getStringFromDate(date);
-    }
-
     public String getText() {
         return text;
     }

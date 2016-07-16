@@ -325,9 +325,9 @@ public class MessageHelper {
         return messages;
     }
 
-    public static String getInputCommand(Message message, String tableName) {
+    public static String getInputCommand(String message, String date, String author, String tableName) {
         // INSERT INTO tableName VALUES('text','author','date_added');
-        String statement = "INSERT INTO "+tableName+" VALUES('"+message.getText()+"','"+message.getAuthor()+"','"+message.getDate()+"');";
+        String statement = "INSERT INTO "+tableName+" VALUES('"+message+"','"+author+"','"+date+"');";
         return statement;
     }
 }
