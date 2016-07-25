@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jurtz.android.ichhabnochnie.database.databaseManager;
+import com.jurtz.android.ichhabnochnie.message.Message;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -23,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     RelativeLayout mainLayout;
     TextView txtMessage;
     ImageButton cmdDelete;
+    TextView lblRestoreDeletedMessage;
 
     private SQLiteDatabase db;
     private databaseManager dbManager;
@@ -30,10 +32,13 @@ public class GameActivity extends AppCompatActivity {
     String sql;
     Random random;
     String currentMessage;
+    String currentMessageDate;
+    String currentMessageAuthor;
     String emptyMessage;
+    String deletedMessage;
 
     // Speichert sämtliche Strings
-    ArrayList<String> messages;
+    ArrayList<Message> messages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,8 @@ public class GameActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         emptyMessage = "Keine Einträge vorhanden\n\n¯\\_(ツ)_/¯";
         currentMessage = "";
+        currentMessageDate= "";
+        currentMessageAuthor = "";
 
         // SQL-Befehl anhand Auswahl aus voriger Activity
         Bundle data = getIntent().getExtras();
@@ -90,6 +97,18 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
+        // TextView, Klick stellt gelöschten Eintrag wieder her
+        lblRestoreDeletedMessage = (TextView)findViewById(R.id.lblRestoreDeletedMessage);
+        lblRestoreDeletedMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(deletedMessage != "" && deletedMessage != null) {
+                    String sql = "INSERT INTO "+databaseManager.getTableName()+" VALUES('"+currentMessage+"','"+currentMessageAuthor+"','"+currentMessageDate+"');";
+                    Toast.makeText(getApplicationContext(),sql,Toast.LENGTH_SHORT).show();
+                    
+                }
+            }
+        });
     }
     @Override
     protected void onResume() {
@@ -104,7 +123,10 @@ public class GameActivity extends AppCompatActivity {
         if(klassenCursor.getCount() > 0) {
             if (klassenCursor.moveToFirst()) {
                 while (klassenCursor.isAfterLast() == false) {
-                    messages.add(klassenCursor.getString(klassenCursor.getColumnIndex("text")));
+                    text = klassenCursor.getString(klassenCursor.getColumnIndex("text"));
+                    author = klassenCursor.getString(klassenCursor.getColumnIndex("author"));
+                    date = klassenCursor.getString(klassenCursor.getColumnIndex("date_added"));
+                    messages.add(new Message(text,date,author));
                     klassenCursor.moveToNext();
                 }
             }
@@ -118,14 +140,18 @@ public class GameActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         db.close();
-        // Toast.makeText(getApplicationContext(),"Datenbank geschlossen",Toast.LENGTH_SHORT).show();
     }
+
+    // Lade zufälligen Eintrag aus der Liste mit allen Sprüchen
+    // Eintrag wird anschließend aus der Liste entfernt, um doppelte Texte zu vermeiden
     String getRandomEntry(Random r) {
         if(messages.size() == 0) {
             return emptyMessage;
         } else {
             int index = r.nextInt(messages.size());
-            String entry = messages.get(index);
+            String entry = messages.get(index).getText();
+            currentMessageAuthor = messages.get(index).getAuthor();
+            currentMessageDate = messages.get(index).getDate();
             messages.remove(index);
             return entry;
         }

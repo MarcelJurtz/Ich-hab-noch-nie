@@ -33,4 +33,18 @@
         android:id="@+id/cmdDel"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Eintrag wieder herstellen"
+        android:id="@+id/lblRestoreDeletedMessage"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorMainForeground"
+        android:typeface="sans"
+        android:textSize="16dp"
+        android:paddingTop="30dp"
+        android:paddingLeft="10dp"
+        android:clickable="true"/>
 </RelativeLayout>

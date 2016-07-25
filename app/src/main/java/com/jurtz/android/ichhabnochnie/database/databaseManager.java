@@ -35,9 +35,9 @@ public class databaseManager extends SQLiteOpenHelper {
 
     private static final String dropTable = "DROP TABLE IF EXISTS "+tableName+";";
 
-    public static final String SELECT_USER_MESSAGES = "SELECT text FROM "+tableName+" WHERE author='CUSTOM';";
-    public static final String SELECT_SYSTEM_MESSAGES = "SELECT text FROM "+tableName+" WHERE author='SYSTEM';";
-    public static final String SELECT_ALL_MESSAGES = "SELECT text FROM "+tableName+";";
+    public static final String SELECT_USER_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author='CUSTOM';";
+    public static final String SELECT_SYSTEM_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author='SYSTEM';";
+    public static final String SELECT_ALL_MESSAGES = "SELECT text, author, date_added FROM "+tableName+";";
 
     public databaseManager(Context context) {
         super(context,dbName,null,dbVersion);
