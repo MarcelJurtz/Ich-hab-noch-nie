@@ -36,6 +36,8 @@ public class GameActivity extends AppCompatActivity {
     String currentMessageAuthor;
     String emptyMessage;
     String deletedMessage;
+    String deletedMessageAuthor;
+    String deletedMessageDate;
 
     // Speichert sämtliche Strings
     ArrayList<Message> messages;
@@ -45,10 +47,18 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        // Standardtext bei leerer Liste
         emptyMessage = "Keine Einträge vorhanden\n\n¯\\_(ツ)_/¯";
+
+        // Speichern des aktuellen Texts
         currentMessage = "";
         currentMessageDate= "";
         currentMessageAuthor = "";
+
+        deletedMessage = "";
+        deletedMessageAuthor = "";
+        deletedMessageDate = "";
 
         // SQL-Befehl anhand Auswahl aus voriger Activity
         Bundle data = getIntent().getExtras();
@@ -68,6 +78,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 currentMessage = getRandomEntry(random);
                 updateMessage();
+                lblRestoreDeletedMessage.setVisibility(View.INVISIBLE);
             }
         });
         mainLayout.setOnLongClickListener(new View.OnLongClickListener() {
@@ -90,10 +101,17 @@ public class GameActivity extends AppCompatActivity {
                     db = dbManager.getReadableDatabase();
                     db.execSQL(sql);
                     Toast.makeText(getApplicationContext(), "Eintrag wurde gelöscht", Toast.LENGTH_SHORT).show();
+
+                    // Eintrag zur Wiederherstellung speichern
+                    deletedMessage = currentMessage;
+                    deletedMessageAuthor = currentMessageAuthor;
+                    deletedMessageDate = currentMessageDate;
+
                     // Neuen Eintrag laden
                     currentMessage = getRandomEntry(random);
                     updateMessage();
                     db.close();
+                    lblRestoreDeletedMessage.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -103,12 +121,22 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(deletedMessage != "" && deletedMessage != null) {
-                    String sql = "INSERT INTO "+databaseManager.getTableName()+" VALUES('"+currentMessage+"','"+currentMessageAuthor+"','"+currentMessageDate+"');";
-                    Toast.makeText(getApplicationContext(),sql,Toast.LENGTH_SHORT).show();
-                    
+                    // Einfügen des zuletzt gewählten Eintrags
+                    String sql = "INSERT INTO "+databaseManager.getTableName()+" VALUES('"+deletedMessage+"','"+deletedMessageAuthor+"','"+deletedMessageDate+"');";
+                    db = dbManager.getReadableDatabase();
+                    try {
+                        db.execSQL(sql);
+                        Toast.makeText(getApplicationContext(),"Eintrag erfolgreich wiederhergestellt",Toast.LENGTH_SHORT).show();
+                    } catch (Exception ex) {
+                        Toast.makeText(getApplicationContext(),"Fehler bei der Wiederherstellung",Toast.LENGTH_SHORT).show();
+                    } finally {
+                        db.close();
+                        lblRestoreDeletedMessage.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
         });
+        lblRestoreDeletedMessage.setVisibility(View.INVISIBLE);
     }
     @Override
     protected void onResume() {
