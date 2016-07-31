@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameActivity" />
-        <activity android:name=".customEntryActivity"></activity>
+        <activity android:name=".customEntryActivity" />
+        <activity android:name=".DeletedEntriesActivity"></activity>
     </application>
 
 </manifest>

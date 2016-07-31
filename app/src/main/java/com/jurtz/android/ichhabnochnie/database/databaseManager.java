@@ -39,6 +39,11 @@ public class databaseManager extends SQLiteOpenHelper {
     public static final String SELECT_SYSTEM_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author='SYSTEM';";
     public static final String SELECT_ALL_MESSAGES = "SELECT text, author, date_added FROM "+tableName+";";
 
+    public static final String STR_MESSAGE_CUSTOM = "CUSTOM";
+    public static final String STR_MESSAGE_SYSTEM = "SYSTEM";
+    public static final String STR_MESSAGE_CUSTOM_DELETED = "CUSTOM_DELETED";
+    public static final String STR_MESSAGE_SYSTEM_DELETED = "SYSTEM_DELETED";
+
     public databaseManager(Context context) {
         super(context,dbName,null,dbVersion);
     }

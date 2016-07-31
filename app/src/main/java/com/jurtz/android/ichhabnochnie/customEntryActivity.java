@@ -72,7 +72,7 @@ public class customEntryActivity extends AppCompatActivity {
 
                         String today = databaseManager.getVersionDate();
                         String text = txtCustomEntry.getText().toString().replace("'","\'");
-                        String sql = MessageHelper.getInputCommand(text, today, "CUSTOM", databaseManager.getTableName());
+                        String sql = MessageHelper.getInputCommand(text, today, databaseManager.STR_MESSAGE_CUSTOM, databaseManager.getTableName());
                         try {
                             db.execSQL(sql);
                             Toast.makeText(getApplicationContext(), "Eintrag hinzugefügt", Toast.LENGTH_SHORT).show();

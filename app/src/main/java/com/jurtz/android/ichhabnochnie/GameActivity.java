@@ -1,13 +1,12 @@
 package com.jurtz.android.ichhabnochnie;
 
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -61,7 +60,7 @@ public class GameActivity extends AppCompatActivity {
         deletedMessageDate = "";
 
         // SQL-Befehl anhand Auswahl aus voriger Activity
-        Bundle data = getIntent().getExtras();
+        final Bundle data = getIntent().getExtras();
         sql = databaseManager.SELECT_ALL_MESSAGES; // Standard
         if(data != null)
             sql = data.getString("sql");
@@ -95,7 +94,14 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Funktioniert zwar dank SQL auch so, aber unnötige DB-Verbindung wird bei leerem String vermieden
                 if (currentMessage != "" && currentMessage != null && currentMessage != emptyMessage) {
-                    String sql = "DELETE FROM " + databaseManager.getTableName() + " WHERE text='" + currentMessage + "'";
+                    String del_author;
+                    if(currentMessageAuthor.equals(databaseManager.STR_MESSAGE_CUSTOM)) {
+                        del_author = databaseManager.STR_MESSAGE_CUSTOM;
+                    } else {
+                        del_author = databaseManager.STR_MESSAGE_SYSTEM;
+                    }
+                    del_author += "_DELETED";
+                    String sql = "UPDATE " + databaseManager.getTableName() + " SET author = '"+del_author+"'  WHERE text='" + currentMessage + "'";
 
                     // Eintrag löschen
                     db = dbManager.getReadableDatabase();
@@ -115,6 +121,15 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
+        cmdDelete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent deletedEntriesIntent = new Intent(GameActivity.this,DeletedEntriesActivity.class);
+                startActivity(deletedEntriesIntent);
+                return true;
+            }
+        });
+
         // TextView, Klick stellt gelöschten Eintrag wieder her
         lblRestoreDeletedMessage = (TextView)findViewById(R.id.lblRestoreDeletedMessage);
         lblRestoreDeletedMessage.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +137,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(deletedMessage != "" && deletedMessage != null) {
                     // Einfügen des zuletzt gewählten Eintrags
-                    String sql = "INSERT INTO "+databaseManager.getTableName()+" VALUES('"+deletedMessage+"','"+deletedMessageAuthor+"','"+deletedMessageDate+"');";
+                    String sql = "UPDATE "+databaseManager.getTableName()+" SET author='"+deletedMessageAuthor+"' WHERE text='"+deletedMessage+"';";
                     db = dbManager.getReadableDatabase();
                     try {
                         db.execSQL(sql);
