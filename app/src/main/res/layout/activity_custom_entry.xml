@@ -34,18 +34,25 @@
             android:layout_height="wrap_content"
             android:text="Einfügen"
             android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/cmdCustomEntryEnter"
             android:textColor="@color/textColor"
-            android:background="@color/colorMainBackground" />
+            android:background="@drawable/startbutton"
+            android:textSize="16dp"
+            android:layout_marginRight="5dp"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Zurück"
             android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/cmdCustomEntryCancel"
             android:textColor="@color/textColor"
-            android:background="@color/colorMainBackground" />
+
+            android:textSize="16dp"
+            android:background="@drawable/startbutton"
+            android:layout_marginLeft="5dp"/>
 
     </LinearLayout>
 

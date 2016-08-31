@@ -12,20 +12,20 @@
     android:background="@color/colorMainBackground"
     android:id="@+id/llDeletedEntriesMain">
 
-
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="Gelöschte Einträge:"
         android:id="@+id/lblDeletedEntriesCaption"
-        android:layout_weight="1"
         android:textSize="24dp"
-        android:textColor="@color/colorMainForeground" />
+        android:textColor="@color/colorMainForeground"
+        android:layout_alignParentTop="true"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="12"
         android:id="@+id/svDeletedEntries">
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,12 +37,14 @@
     </ScrollView>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Zurück"
-        android:layout_weight="1"
         android:id="@+id/cmdDeletedEntriesReturn"
-        android:background="@color/colorMainBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:textColor="@color/textColor"
-        android:layout_gravity="right" />
+        android:background="@drawable/startbutton"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"/>
+
 </LinearLayout>

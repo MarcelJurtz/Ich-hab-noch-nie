@@ -2,10 +2,12 @@ package com.jurtz.android.ichhabnochnie;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.Size;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -24,6 +26,8 @@ public class DeletedEntriesActivity extends AppCompatActivity {
     private LinearLayout llDeleted;
     private SQLiteDatabase db;
     private databaseManager dbManager;
+    private HashMap<String,TextView> HMdeletedTexts;
+    private TextView txtCaption;
 
 
     @Override
@@ -31,6 +35,10 @@ public class DeletedEntriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deleted_entries);
 
+        HMdeletedTexts = new HashMap<>();
+
+        txtCaption = (TextView)findViewById(R.id.lblDeletedEntriesCaption);
+        txtCaption.setPaintFlags(txtCaption.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         cmdReturn = (Button)findViewById(R.id.cmdDeletedEntriesReturn);
         cmdReturn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,15 +70,18 @@ public class DeletedEntriesActivity extends AppCompatActivity {
                         final String currentText = text;
                         final String currentAuthor = author;
                         TextView txt = new TextView(getApplicationContext());
-                        txt.setText(text);
+                        txt.setText("\u2022 " + text);
+                        txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
                         txt.setClickable(true);
+                        txt.setPadding(0,10,0,10);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                restoreEntry(currentText,currentAuthor);
+                                restoreEntry(currentText, currentAuthor);
                             }
                         });
                         llDeleted.addView(txt);
+                        HMdeletedTexts.put(currentText,txt);
                         dbCursor.moveToNext();
                     }
                 }
@@ -91,6 +102,7 @@ public class DeletedEntriesActivity extends AppCompatActivity {
             }
             String sql = "UPDATE "+databaseManager.getTableName()+" SET author = '"+author+"' WHERE text = '"+text+"'";
             db.execSQL(sql);
+            llDeleted.removeView(HMdeletedTexts.get(text));
             Toast.makeText(getApplicationContext(),"Eintrag wiederhergestellt",Toast.LENGTH_SHORT).show();
         } catch(Exception ex) {
             Toast.makeText(getApplicationContext(),"Fehler bei der Wiederherstellung",Toast.LENGTH_SHORT).show();
