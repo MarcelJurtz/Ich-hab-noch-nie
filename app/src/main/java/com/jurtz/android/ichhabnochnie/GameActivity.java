@@ -177,6 +177,7 @@ public class GameActivity extends AppCompatActivity {
         db.close();
         currentMessage = getRandomEntry(random);
         updateMessage();
+        lblRestoreDeletedMessage.setVisibility(View.INVISIBLE);
     }
 
     @Override

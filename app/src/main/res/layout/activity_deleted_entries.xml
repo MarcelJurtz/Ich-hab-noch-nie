@@ -41,10 +41,12 @@
         android:id="@+id/cmdDeletedEntriesReturn"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:textColor="@color/textColor"
         android:background="@drawable/startbutton"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp" />
 
 </LinearLayout>

@@ -17,7 +17,7 @@ public class MessageHelper {
 
         messages.add(new Message("24 Stunden am Stück vor dem Fernseher verbracht",date2, user));
         messages.add(new Message("Alkohol getrunken",date2,user));
-		messages.add(new Message("american Football gespielt",date3,user));
+		messages.add(new Message("American Football gespielt",date3,user));
         messages.add(new Message("an einem Casting teilgenommen",date2,user));
         messages.add(new Message("an einen elektrischen Zaun gepinkelt",date2,user));
         messages.add(new Message("an einer Wand gelauscht, um andere beim Sex zu hören",date2,user));

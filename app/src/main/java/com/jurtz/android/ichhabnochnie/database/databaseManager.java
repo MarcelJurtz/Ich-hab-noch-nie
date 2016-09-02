@@ -22,7 +22,7 @@ public class databaseManager extends SQLiteOpenHelper {
 
     private static final String dbName = "db_IchHabNochNie";
     // version 9: Update 12.7.
-    private static final int dbVersion = 17;
+    private static final int dbVersion = 20;
 
     public static String versionDate = "2016-07-16";
 
@@ -35,14 +35,15 @@ public class databaseManager extends SQLiteOpenHelper {
 
     private static final String dropTable = "DROP TABLE IF EXISTS "+tableName+";";
 
-    public static final String SELECT_USER_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author='CUSTOM';";
-    public static final String SELECT_SYSTEM_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author='SYSTEM';";
-    public static final String SELECT_ALL_MESSAGES = "SELECT text, author, date_added FROM "+tableName+";";
-
     public static final String STR_MESSAGE_CUSTOM = "CUSTOM";
     public static final String STR_MESSAGE_SYSTEM = "SYSTEM";
     public static final String STR_MESSAGE_CUSTOM_DELETED = "CUSTOM_DELETED";
     public static final String STR_MESSAGE_SYSTEM_DELETED = "SYSTEM_DELETED";
+
+    public static final String SELECT_USER_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author='CUSTOM';";
+    public static final String SELECT_SYSTEM_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author='SYSTEM';";
+    public static final String SELECT_ALL_MESSAGES = "SELECT text, author, date_added FROM "+tableName+";";
+    public static final String SELECT_DELETED_MESSAGES = "SELECT text, author, date_added FROM "+tableName+" WHERE author = '"+STR_MESSAGE_CUSTOM_DELETED+"' OR author = '"+STR_MESSAGE_SYSTEM_DELETED+"';";
 
     public databaseManager(Context context) {
         super(context,dbName,null,dbVersion);
@@ -65,18 +66,18 @@ public class databaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Backup and Re-Insert CUSTOMs
-        ArrayList<String> customs = new ArrayList<>();
+        // Eigene Einträge abspeichern und wieder einfügen
+        ArrayList<String> customEntriesArray = new ArrayList<>();
         boolean customsExist = false;
         Cursor c = db.rawQuery(SELECT_USER_MESSAGES, null);
         if(c.getCount() > 0) {
             customsExist = true;
             String text;
             if (c.moveToFirst()) {
-                while (c.isAfterLast() == false) {
+                while (!c.isAfterLast()) {
                     try {
                         text = c.getString(c.getColumnIndex("text"));
-                        customs.add(text);
+                        customEntriesArray.add(text);
                         c.moveToNext();
                     }
                     catch (Exception ex) {
@@ -87,12 +88,41 @@ public class databaseManager extends SQLiteOpenHelper {
                 }
             }
         }
+        // Gelöschte Einträge als solche Markieren und wieder einfügen
+        // Eigene gelöschte Einträge werden nicht doppelt beinhaltet:
+        //  eigene: author=CUSTOM
+        //  eigene gelöschte: author=CUSTOM_DELETED
+        ArrayList<Message> deletedEntriesArray = new ArrayList<>();
+        boolean deletedExists = false;
+        Cursor delCursor = db.rawQuery(SELECT_DELETED_MESSAGES,null);
+        if(delCursor.getCount() > 0) {
+            deletedExists = true;
+            String text;
+            String author;
+            String date;
+            if(delCursor.moveToFirst()) {
+                while(!delCursor.isAfterLast()) {
+                    try {
+                        text = delCursor.getString(delCursor.getColumnIndex("text"));
+                        author = delCursor.getString(delCursor.getColumnIndex("author"));
+                        date = delCursor.getString(delCursor.getColumnIndex("date_added"));
+                        deletedEntriesArray.add(new Message(text, date, author));
+                        delCursor.moveToNext();
+                    } catch(Exception ex) {
+                        // Fehler bei Übernahme der Daten
+                        // While-Loop beenden
+                        break;
+                    }
+                }
+            }
+        }
+
         db.execSQL(dropTable);
         db.execSQL(createTable);
         if(customsExist) {
             // Einträge wieder einfügen
-            for(int i = 0; i<customs.size(); i++) {
-                String sql = MessageHelper.getInputCommand(customs.get(i), versionDate, "CUSTOM", tableName);
+            for(int i = 0; i<customEntriesArray.size(); i++) {
+                String sql = MessageHelper.getInputCommand(customEntriesArray.get(i), versionDate, "CUSTOM", tableName);
                 try {
                     db.execSQL(sql);
                 } catch (SQLException sqlEx) {
@@ -104,6 +134,26 @@ public class databaseManager extends SQLiteOpenHelper {
         HashSet<Message> messages = MessageHelper.getMessages();
         for(Message msg : messages) {
             db.execSQL(MessageHelper.getInputCommand(msg.getText(),msg.getDate(),msg.getAuthor(),tableName));
+        }
+
+        // Gelöschte Einträge einspielen
+        if(deletedExists) {
+            String query = "";
+            for(int i = 0; i<deletedEntriesArray.size(); i++) {
+                Message currentMessage = deletedEntriesArray.get(i);
+                if(currentMessage.getAuthor().equals(STR_MESSAGE_SYSTEM_DELETED)) {
+                    // Systemnachricht gelöscht: UPDATE
+                    query = "UPDATE "+tableName+" SET author='"+STR_MESSAGE_SYSTEM_DELETED+"' WHERE text = '"+currentMessage.getText()+"'";
+                } else {
+                    // Eigene Nachricht: INSERT
+                    query = MessageHelper.getInputCommand(currentMessage.getText(),currentMessage.getDate(), currentMessage.getAuthor(), tableName);
+                }
+                try {
+                    db.execSQL(query);
+                } catch (Exception ex) {
+                    // Fehler beim Einspielen gelöschter Einträge
+                }
+            }
         }
     }
     public static String getTableName() {
