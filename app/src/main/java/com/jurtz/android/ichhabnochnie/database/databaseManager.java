@@ -22,7 +22,7 @@ public class databaseManager extends SQLiteOpenHelper {
 
     private static final String dbName = "db_IchHabNochNie";
     // version 9: Update 12.7.
-    private static final int dbVersion = 20;
+    private static final int dbVersion = 21;
 
     public static String versionDate = "2016-07-16";
 
