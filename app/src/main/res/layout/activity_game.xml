@@ -26,10 +26,9 @@
         android:textSize="30dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:src="@drawable/logo_rund_70"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/logo_rund"
         android:id="@+id/cmdDel"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
