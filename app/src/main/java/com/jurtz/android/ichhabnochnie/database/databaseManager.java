@@ -22,9 +22,9 @@ public class databaseManager extends SQLiteOpenHelper {
 
     private static final String dbName = "db_IchHabNochNie";
     // version 9: Update 12.7.
-    private static final int dbVersion = 21;
+    private static final int dbVersion = 22;
 
-    public static String versionDate = "2016-07-16";
+    public static String versionDate = "2016-09-28";
 
     private static final String tableName = "message";
     private static final String createTable = "CREATE TABLE "+tableName+"(" +
@@ -126,7 +126,9 @@ public class databaseManager extends SQLiteOpenHelper {
                 try {
                     db.execSQL(sql);
                 } catch (SQLException sqlEx) {
-                    // To be implemented
+                    // Eintrag kann nicht eingefügt werden
+                    // BSP: Eintrag, der selbst erstellt wurde, ist in Update enthalten
+                    // -> Überspringen
                 }
             }
         }

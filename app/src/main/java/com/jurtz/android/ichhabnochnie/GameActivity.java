@@ -204,6 +204,7 @@ public class GameActivity extends AppCompatActivity {
     private void updateMessage() {
         if(currentMessage != emptyMessage) {
             txtMessage.setText("Ich hab noch nie "+currentMessage);
+            Toast.makeText(getApplicationContext(),messages.size()+"",Toast.LENGTH_SHORT).show();
         } else {
             txtMessage.setText(currentMessage);
         }
