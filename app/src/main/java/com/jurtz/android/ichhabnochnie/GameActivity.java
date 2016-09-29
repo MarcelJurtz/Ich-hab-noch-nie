@@ -62,9 +62,9 @@ public class GameActivity extends AppCompatActivity {
         // SQL-Befehl anhand Auswahl aus voriger Activity
         final Bundle data = getIntent().getExtras();
         sql = databaseManager.SELECT_ALL_MESSAGES; // Standard
-        if(data != null)
+        if(data != null) {
             sql = data.getString("sql");
-
+        }
         // Instanziierung dbManager & Liste
         random = new Random();
         dbManager = new databaseManager(this);
@@ -141,6 +141,7 @@ public class GameActivity extends AppCompatActivity {
                     db = dbManager.getReadableDatabase();
                     try {
                         db.execSQL(sql);
+                        messages.add(new Message(deletedMessage,deletedMessageDate,deletedMessageAuthor));
                         Toast.makeText(getApplicationContext(),"Eintrag erfolgreich wiederhergestellt",Toast.LENGTH_SHORT).show();
                     } catch (Exception ex) {
                         Toast.makeText(getApplicationContext(),"Fehler bei der Wiederherstellung",Toast.LENGTH_SHORT).show();
@@ -153,9 +154,17 @@ public class GameActivity extends AppCompatActivity {
         });
         lblRestoreDeletedMessage.setVisibility(View.INVISIBLE);
     }
+
+    // Nachrichten laden
+    // Auch bei Rückkehr aus Gelöschte-Menü,
+    // Einträge sind nach wiederherstellung also sofort wieder da.
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Vorherige Einträge löschen
+        messages.clear();
+
         db = dbManager.getReadableDatabase();
         // Toast.makeText(getApplicationContext(), "Datenbank geöffnet", Toast.LENGTH_SHORT).show();
 
@@ -201,10 +210,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    // Neue Nachricht laden
     private void updateMessage() {
         if(currentMessage != emptyMessage) {
-            txtMessage.setText("Ich hab noch nie "+currentMessage);
-            Toast.makeText(getApplicationContext(),messages.size()+"",Toast.LENGTH_SHORT).show();
+            txtMessage.setText("Ich hab noch nie " + currentMessage);
         } else {
             txtMessage.setText(currentMessage);
         }

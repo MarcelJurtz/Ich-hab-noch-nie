@@ -72,6 +72,7 @@ public class DeletedEntriesActivity extends AppCompatActivity {
                         TextView txt = new TextView(getApplicationContext());
                         txt.setText("\u2022 " + text);
                         txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+                        txt.setTextColor(getResources().getColor(R.color.colorMainForeground));
                         txt.setClickable(true);
                         txt.setPadding(0,10,0,10);
                         txt.setOnClickListener(new View.OnClickListener() {
