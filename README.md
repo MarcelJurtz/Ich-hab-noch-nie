@@ -1,18 +1,34 @@
-##### Ich hab noch nie...
+﻿# Ich hab noch nie...
 
-App zum bekannten Trinkspiel, enth�lt beim Release von Version 1.0 �ber 250 Eintr�ge und die M�glichkeit, eigene hinzuzuf�gen.
+App zum bekannten Trinkspiel, enthält beim Release von Version 1.0 über 250 Einträge und die Möglichkeit, eigene hinzuzufügen.
+
+## Download
+
+Siehe *Release*-Ordner
 
 https://play.google.com/store/apps/details?id=com.jurtz.android.ichhabnochnie
+<a href="https://play.google.com/store/apps/details?id=com.jurtz.android.ichhabnochnie"><img src="https://raw.githubusercontent.com/MarcelJurtz/Ich-hab-noch-nie/master/ASSETS/google-play-badge.png" width="200" alt="Get it on Google Play"></a>
 
-### �nderungshistorie:
-29.09.206 - Release 1.3 - 50 neue Einträge
+## Changelog
 
-13.09.2016 - Release 1.2.1 	- Textfehler korrigiert
+### 29.09.206 - Release 1.3
 
-03.09.2016 - Release 1.2 	- Feature zum l�schen von Eintr�gen und verwalten dieser hinzugef�gt, Grafiken verbessert
+* 50 neue Einträge
 
-16.07.2016 - Release 1.1.1 	- Fehlerbehebung durch Datenbankupdate bei exisitierenden eigenen Eintr�gen, Bildschirmtimeout deaktiviert
+### 13.09.2016 - Release 1.2.1
 
-12.07.2016 - Release 1.1 	- 50 Neue Eintr�ge
+* Textfehler korrigiert
 
-17.06.2016 - Release 1.0
+### 03.09.2016 - Release 1.2
+
+* Feature zum löschen von Einträgen und verwalten dieser hinzugefügt, Grafiken verbessert
+
+### 16.07.2016 - Release 1.1.1
+
+* Fehlerbehebung durch Datenbankupdate bei exisitierenden eigenen Einträgen, Bildschirmtimeout deaktiviert
+
+### 12.07.2016 - Release 1.1
+
+* 50 Neue Einträge
+
+### 17.06.2016 - Release 1.0
