@@ -6,7 +6,6 @@ App zum bekannten Trinkspiel, enthält beim Release von Version 1.0 über 250 Ei
 
 Siehe *Release*-Ordner
 
-https://play.google.com/store/apps/details?id=com.jurtz.android.ichhabnochnie
 <a href="https://play.google.com/store/apps/details?id=com.jurtz.android.ichhabnochnie"><img src="https://raw.githubusercontent.com/MarcelJurtz/Ich-hab-noch-nie/master/ASSETS/google-play-badge.png" width="200" alt="Get it on Google Play"></a>
 
 ## Changelog
