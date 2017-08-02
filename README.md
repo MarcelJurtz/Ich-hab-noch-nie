@@ -1,6 +1,8 @@
 ﻿# Ich hab noch nie...
 
-App zum bekannten Trinkspiel, enthält beim Release von Version 1.0 über 250 Einträge und die Möglichkeit, eigene hinzuzufügen.
+App zum bekannten Trinkspiel.
+
+Aktuell sind ca. 350 Texte vorhanden, es besteht die Möglichkeit, eigene hinzuzufügen, sowie zwischen Eigenen Texten / Vorgebenenen Texten / Beiden Kategorien zu filtern.
 
 ## Download
 
@@ -20,11 +22,13 @@ Siehe *Release*-Ordner
 
 ### 03.09.2016 - Release 1.2
 
-* Feature zum löschen von Einträgen und verwalten dieser hinzugefügt, Grafiken verbessert
+* Feature zum Löschen von Einträgen und verwalten dieser hinzugefügt
+* Grafiken verbessert
 
 ### 16.07.2016 - Release 1.1.1
 
-* Fehlerbehebung durch Datenbankupdate bei exisitierenden eigenen Einträgen, Bildschirmtimeout deaktiviert
+* Fehlerbehebung durch Datenbankupdate bei exisitierenden eigenen Einträgen
+* Bildschirmtimeout deaktiviert
 
 ### 12.07.2016 - Release 1.1
 
