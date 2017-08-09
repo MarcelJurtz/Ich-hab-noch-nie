@@ -3,7 +3,7 @@ package com.jurtz.android.ichhabnochnie.message;
 import java.util.HashSet;
 
 /**
- * Laden der Nachrichten zum Datenbank-Aufbau
+ * Creating the database
  */
 public class MessageHelper {
 
@@ -12,13 +12,13 @@ public class MessageHelper {
         HashSet<Message> messages = new HashSet<>();
         String date = "2016-05-27";
         String date2 = "2016-05-31";
-		String date3 = "2016-07-12";
+	String date3 = "2016-07-12";
         String date4 = "2016-09-28";
         String user = "SYSTEM";
 
         messages.add(new Message("24 Stunden am Stück vor dem Fernseher verbracht",date2, user));
         messages.add(new Message("Alkohol getrunken",date2,user));
-		messages.add(new Message("American Football gespielt",date3,user));
+	messages.add(new Message("American Football gespielt",date3,user));
         messages.add(new Message("an einem Casting teilgenommen",date2,user));
         messages.add(new Message("an einen elektrischen Zaun gepinkelt",date2,user));
         messages.add(new Message("an einer Demo teilgenommen",date4, user));
@@ -26,25 +26,25 @@ public class MessageHelper {
         messages.add(new Message("Analsex gehabt",date,user));
         messages.add(new Message("auf 4chan gebrowsed",date2,user));
         messages.add(new Message("auf der Arbeit Alkohol getrunken",date2,user));
-		messages.add(new Message("auf einem Festival meine Brüste gezeigt",date3,user));
+	messages.add(new Message("auf einem Festival meine Brüste gezeigt",date3,user));
         messages.add(new Message("auf einem Tisch getanzt",date,user));
-		messages.add(new Message("auf Steam ein Spiel gekauft und es nie gespielt",date3,user));
-		messages.add(new Message("Baseball gespielt",date3,user));
+	messages.add(new Message("auf Steam ein Spiel gekauft und es nie gespielt",date3,user));
+	messages.add(new Message("Baseball gespielt",date3,user));
         messages.add(new Message("bei diesem Spiel etwas herausgefunden, was ich lieber nicht gewusst hätte",date,user));
-		messages.add(new Message("bei diesem Spiel gelogen",date,user));
+	messages.add(new Message("bei diesem Spiel gelogen",date,user));
         messages.add(new Message("bei einem ernsten Gespräch anfangen müssen, zu lachen",date2,user));
         messages.add(new Message("bei einem Telefonat gelauscht",date4, user));
-		messages.add(new Message("bei einer Achterbahnfahrt gekotzt",date3,user));
+	messages.add(new Message("bei einer Achterbahnfahrt gekotzt",date3,user));
         messages.add(new Message("bei einer Orgie mitgemacht",date,user));
         messages.add(new Message("bei einer Prüfung geschummelt",date,user));
         messages.add(new Message("bei einer Sex-Hotline angerufen",date2,user));
-		messages.add(new Message("bei einer Talentshow mitgemacht",date3,user));
+	messages.add(new Message("bei einer Talentshow mitgemacht",date3,user));
         messages.add(new Message("bei jemand anderem zuhause masturbiert",date4, user));
         messages.add(new Message("beim Aufwachen nicht mehr gewusst, wo ich war",date2,user));
         messages.add(new Message("beim Beerpong gewonnen",date,user));
-		messages.add(new Message("beim Beerpong verloren",date3,user));
+	messages.add(new Message("beim Beerpong verloren",date3,user));
         messages.add(new Message("beim Flunkyball gewonnen",date,user));
-		messages.add(new Message("beim Flunkyball verloren",date3,user));
+	messages.add(new Message("beim Flunkyball verloren",date3,user));
         messages.add(new Message("beim Knutschen rülpsen müssen",date4,user));
         messages.add(new Message("beim Masturbieren an jemanden aus dieser Gruppe gedacht",date4, user));
         messages.add(new Message("beim Rummachen mit meinem Partner an jemand anderen gedacht",date2,user));
@@ -56,14 +56,14 @@ public class MessageHelper {
         messages.add(new Message("beim Sex jemandem gesagt, was er/sie zu tun hat",date,user));
         messages.add(new Message("beim Speeddating mitgemacht",date2,user));
         messages.add(new Message("beim Telefonieren masturbiert",date2,user));
-		messages.add(new Message("beim Versuch, Analsex zu haben versagt",date3,user));
-		messages.add(new Message("betrunken ein Referat gehalten",date3,user));
+	messages.add(new Message("beim Versuch, Analsex zu haben versagt",date3,user));
+	messages.add(new Message("betrunken ein Referat gehalten",date3,user));
         messages.add(new Message("bezüglich meines Gewichts gelogen",date2,user));
-		messages.add(new Message("Bisasam als Starterpokémon gewählt",date3,user));
+	messages.add(new Message("Bisasam als Starterpokémon gewählt",date3,user));
         messages.add(new Message("blöde Trinkspiele gespielt",date,user));
         messages.add(new Message("Bungee Jumping gemacht",date,user));
-		messages.add(new Message("Cola getrunken obwohl auch Alkohol da gewesen wäre",date3,user));
-		messages.add(new Message("Crocs getragen",date3,user));
+	messages.add(new Message("Cola getrunken obwohl auch Alkohol da gewesen wäre",date3,user));
+	messages.add(new Message("Crocs getragen",date3,user));
         messages.add(new Message("daran gedacht, auszuwandern",date2,user));
         messages.add(new Message("darauf gewartet, dass endlich jemand vorschlägt, nackt weiterzuspielen",date2,user));
         messages.add(new Message("den Dildo von jemand anderem benutzt",date,user));
@@ -71,7 +71,7 @@ public class MessageHelper {
         messages.add(new Message("den Geburtstag eines Familienangehörigen vergessen",date2,user));
         messages.add(new Message("den \"König der Löwen\" angeschaut",date4, user));
         messages.add(new Message("den \"nackten Mann\" gemacht",date,user));
-		messages.add(new Message("den Superbowl gesehen",date3,user));
+	messages.add(new Message("den Superbowl gesehen",date3,user));
         messages.add(new Message("denselben Film mehrmals im Kino gesehen",date,user));
         messages.add(new Message("die 69er-Stellung gemacht",date4,user));
         messages.add(new Message("die Absatzschuhe meiner Mutter getragen",date4, user));
@@ -87,7 +87,7 @@ public class MessageHelper {
         messages.add(new Message("drei Abende am Stück einen Vollrausch gehabt",date2,user));
         messages.add(new Message("ein befreundetes Pärchen nach einem Vierer gefragt",date2,user));
         messages.add(new Message("ein Bett kaputt gemacht",date,user));
-		messages.add(new Message("ein Buch an einem Tag gelesen",date3,user));
+	messages.add(new Message("ein Buch an einem Tag gelesen",date3,user));
         messages.add(new Message("ein Buch gelesen, das mich richtig angeturnt hat",date2,user));
         messages.add(new Message("ein Buch gelesen, obwohl ich es ekelhaft fand",date2,user));
         messages.add(new Message("ein Date frühzeitig beendet",date2,user));
@@ -101,36 +101,36 @@ public class MessageHelper {
         messages.add(new Message("ein so gutes Verhältnis zu meinem Partner gehabt, dass wir die Badezimmertür offen gelassen haben",date2,user));
         messages.add(new Message("ein Tagebuch geführt",date2,user));
         messages.add(new Message("ein Tier geritten",date4, user));
-		messages.add(new Message("ein pinkes Polo-Shirt getragen",date3,user));
-		messages.add(new Message("eine Brille ohne Gläser getragen",date3,user));
+	messages.add(new Message("ein pinkes Polo-Shirt getragen",date3,user));
+	messages.add(new Message("eine Brille ohne Gläser getragen",date3,user));
         messages.add(new Message("eine Datingwebsite besucht",date,user));
         messages.add(new Message("eine Diät gemacht",date,user));
         messages.add(new Message("eine echte Waffe abgefeuert",date4, user));
         messages.add(new Message("eine Frau oral befriedigt",date2,user));
         messages.add(new Message("eine Happy-End-Massage bekommen",date,user));
         messages.add(new Message("eine Kündigung erhalten",date2,user));
-		messages.add(new Message("eine Milf angebaggert",date3,user));
+	messages.add(new Message("eine Milf angebaggert",date3,user));
         messages.add(new Message("eine Nacht im Krankenhaus verbracht",date,user));
         messages.add(new Message("eine Panne gehabt, weil ich vergessen hatte zu tanken",date2,user));
         messages.add(new Message("eine perfekte Woche gehabt",date,user));
-		messages.add(new Message("eine Prüfung geschrieben, ohne gelernt zu haben",date3,user));
+	messages.add(new Message("eine Prüfung geschrieben, ohne gelernt zu haben",date3,user));
         messages.add(new Message("eine rote Ampel überfahren",date,user));
         messages.add(new Message("eine Runde Monopoly beendet",date4, user));
         messages.add(new Message("eine Schlägerei gehabt",date,user));
         messages.add(new Message("eine Schlägerei mit einem Türsteher gehabt",date2,user));
         messages.add(new Message("eine Sonnenbrille angezogen um, jemandem auf die Brüste zu gaffen",date,user));
         messages.add(new Message("eine Unterschrift gefälscht",date,user));
-		messages.add(new Message("eine Vorlesung geschwänzt",date3,user));
+	messages.add(new Message("eine Vorlesung geschwänzt",date3,user));
         messages.add(new Message("eine Zigarre geraucht",date2,user));
         messages.add(new Message("eine Zigarette am falschen Ende angezündet",date,user));
         messages.add(new Message("einen Abend allein im Club verbracht",date2,user));
-		messages.add(new Message("einen Alligator/ein Krokodil in der Wildnis gesehen",date3,user));
+	messages.add(new Message("einen Alligator/ein Krokodil in der Wildnis gesehen",date3,user));
         messages.add(new Message("einen anderen Kontinent besucht",date4, user));
-		messages.add(new Message("einen Anwalt gebraucht",date3,user));
+	messages.add(new Message("einen Anwalt gebraucht",date3,user));
         messages.add(new Message("einen Arsch geleckt",date,user));
         messages.add(new Message("einen Autounfall verursacht",date,user));
         messages.add(new Message("einen Betrag unter 5€ per Kreditkarte bezahlt",date4, user));
-		messages.add(new Message("einen BH getragen",date3,user));
+	messages.add(new Message("einen BH getragen",date3,user));
         messages.add(new Message("einen Blowjob bekommen",date,user));
         messages.add(new Message("einen Dildo in der Hand gehalten",date2,user));
         messages.add(new Message("einen Dreier gehabt",date,user));
@@ -140,9 +140,9 @@ public class MessageHelper {
         messages.add(new Message("einen Fickfreund / eine Fickfreundin gehabt",date,user));
         messages.add(new Message("einen Film illegal heruntergeladen",date,user));
         messages.add(new Message("einen ganzen Tag lang Videospiele gespielt",date2,user));
-		messages.add(new Message("einen Gay-Club besucht",date3,user));
+	messages.add(new Message("einen Gay-Club besucht",date3,user));
         messages.add(new Message("einen Haushaltsgegenstand als Sexspielzeug verwendet",date,user));
-		messages.add(new Message("einen Lehrer erpresst",date3,user));
+	messages.add(new Message("einen Lehrer erpresst",date3,user));
         messages.add(new Message("einen Lesbenporno geschaut",date,user));
         messages.add(new Message("einen Neujahrsvorsatz tatsächlich eingehalten",date2,user));
         messages.add(new Message("einen One-Night-Stand gehabt",date2,user));
@@ -153,7 +153,7 @@ public class MessageHelper {
         messages.add(new Message("einen Porno in der Videothek ausgeliehen",date4,user));
         messages.add(new Message("einen Porno mit einem Freund vom gleichen Geschlecht geschaut",date,user));
         messages.add(new Message("einen Prominenten getroffen",date2,user));
-		messages.add(new Message("einen Radiergummi vollständig aufgebraucht",date3,user));
+	messages.add(new Message("einen Radiergummi vollständig aufgebraucht",date3,user));
         messages.add(new Message("einen Schwangerschaftstest gemacht",date,user));
         messages.add(new Message("einen Schwulenporno geschaut",date,user));
         messages.add(new Message("einen Spiegel benutzt, um meine Intimzone zu betrachten",date2,user));
@@ -162,27 +162,27 @@ public class MessageHelper {
         messages.add(new Message("einen Tag ohne Unterwäsche verbracht",date2,user));
         messages.add(new Message("einen Tampon in meine Nase gesteckt",date2,user));
         messages.add(new Message("einen Tanga getragen",date2,user));
-		messages.add(new Message("einen Taser benutzt",date3,user));
+	messages.add(new Message("einen Taser benutzt",date3,user));
         messages.add(new Message("erotische Unterwäsche getragen",date2,user));
         messages.add(new Message("erst im Zug bemerkt, dass ich gar kein Ticket hatte",date2,user));
-		messages.add(new Message("Essen ins Kino geschmuggelt",date3,user));
+	messages.add(new Message("Essen ins Kino geschmuggelt",date3,user));
         messages.add(new Message("etwas anderes als Klopapier benutzt",date2,user));
         messages.add(new Message("etwas besessen, was ich immer versteckt habe, wenn Freunde da waren",date2,user));
         messages.add(new Message("etwas geklaut",date,user));
         messages.add(new Message("etwas beim Sex getan, womit ich mich völlig blamiert habe",date2,user));
         messages.add(new Message("etwas illegales gekauft",date,user));
         messages.add(new Message("Fantasien mit einem (ehemaligen) Lehrer gehabt",date,user));
-		messages.add(new Message("Fussball langweilig gefunden",date3,user));
+	messages.add(new Message("Fussball langweilig gefunden",date3,user));
         messages.add(new Message("für eine Raubkopie Geld zahlen müssen",date,user));
         messages.add(new Message("für jemanden gekocht",date2,user));
         messages.add(new Message("für jemanden gestripped",date,user));
         messages.add(new Message("für Sex bezahlt",date,user));
         messages.add(new Message("für Sex Geld angenommen",date,user));
-		messages.add(new Message("gegen den Wind gepinkelt",date3,user));
+	messages.add(new Message("gegen den Wind gepinkelt",date3,user));
         messages.add(new Message("gehofft, in einer Runde dieses Spiels nicht als einziger trinken zu müssen",date2,user));
-		messages.add(new Message("Geld als Strassenkünstler verdient",date3,user));
-		messages.add(new Message("gelogen, um an einen Job zu kommen",date3,user));
-		messages.add(new Message("gelogen, um bei den Eltern eines Freundes / einer Freundin gut anzukommen",date3,user));
+	messages.add(new Message("Geld als Strassenkünstler verdient",date3,user));
+	messages.add(new Message("gelogen, um an einen Job zu kommen",date3,user));
+	messages.add(new Message("gelogen, um bei den Eltern eines Freundes / einer Freundin gut anzukommen",date3,user));
         messages.add(new Message("gelogen, um einen Freund beim Fremdgehen zu decken",date,user));
         messages.add(new Message("geniest und die Hand an jemand anderem abgewischt",date2,user));
         messages.add(new Message("gepopelt und es dann gegessen",date2,user));
@@ -205,7 +205,7 @@ public class MessageHelper {
         messages.add(new Message("im Club jemandem einen geblasen / einen geblasen bekommen",date2,user));
         messages.add(new Message("im Schwimmbad ins Wasser gepinkelt",date,user));
         messages.add(new Message("im Stehen gepinkelt",date2,user));
-		messages.add(new Message("im Unterricht heimlich Musik gehört",date3,user));
+	messages.add(new Message("im Unterricht heimlich Musik gehört",date3,user));
         messages.add(new Message("in den Spiegel geschaut und mich selbst geil gefunden",date2,user));
         messages.add(new Message("in der Öffentlichkeit in die Hose gepinkelt",date2,user));
         messages.add(new Message("in die Dusche gepinkelt",date2,user));
@@ -215,7 +215,7 @@ public class MessageHelper {
         messages.add(new Message("in einem Raum versucht zu schlafen, während andere Sex hatten",date2, user));
         messages.add(new Message("in einem Sex-Shop etwas gekauft",date2,user));
         messages.add(new Message("in einer Vorlesung / im Unterricht geschlafen",date2,user));
-		messages.add(new Message("in Klamotten geduscht",date3,user));
+	messages.add(new Message("in Klamotten geduscht",date3,user));
         messages.add(new Message("im Bikini Autos gewaschen",date2,user));
         messages.add(new Message("im Bus / Zug den Platz gewechselt, um neben einer attraktiven Person zu sitzen",date2,user));
         messages.add(new Message("jemand anderen beim Sex erwischt",date,user));
@@ -225,9 +225,9 @@ public class MessageHelper {
         messages.add(new Message("jemandem einen Blowjob gegeben",date,user));
         messages.add(new Message("jemandem etwas gebrochen",date,user));
         messages.add(new Message("jemanden angelogen",date4, user));
-		messages.add(new Message("jemanden bei ebay abgezogen",date3,user));
+	messages.add(new Message("jemanden bei ebay abgezogen",date3,user));
         messages.add(new Message("jemanden bei etwas versautem erwischt",date2,user));
-		messages.add(new Message("jemanden bei Facebook blockiert",date3,user));
+	messages.add(new Message("jemanden bei Facebook blockiert",date3,user));
         messages.add(new Message("jemanden beim Autofahren befriedigt",date,user));
         messages.add(new Message("jemanden beim Masturbieren beobachtet",date2,user));
         messages.add(new Message("jemanden beim Pornoschauen erwischt",date2,user));
@@ -242,7 +242,7 @@ public class MessageHelper {
         messages.add(new Message("Klamotten ohne Unterwäsche getragen",date,user));
         messages.add(new Message("Kondome gekauft",date2,user));
         messages.add(new Message("länger als eine Stunde Sex gehabt",date,user));
-		messages.add(new Message("Leute online auf deren Rechtschreibfehler hingewiesen",date3,user));
+	messages.add(new Message("Leute online auf deren Rechtschreibfehler hingewiesen",date3,user));
         messages.add(new Message("Liebeskugeln verwendet",date2,user));
         messages.add(new Message("Make-Up benutzt",date4, user));
         messages.add(new Message("mehr als 5 mal an einem Tag masturbiert",date2,user));
@@ -253,9 +253,9 @@ public class MessageHelper {
         messages.add(new Message("meine Haare bunt gefärbt",date4, user));
         messages.add(new Message("meinem Partner einen versauten Spitznamen gegeben",date2,user));
         messages.add(new Message("meinen Brüsten Namen gegeben",date2,user));
-		messages.add(new Message("meinen Chef angelogen",date3,user));
+	messages.add(new Message("meinen Chef angelogen",date3,user));
         messages.add(new Message("meinen Eltern die Frage, ob ich noch Jungfrau sei, beantworten müssen",date2,user));
-		messages.add(new Message("meinen Facebook-Account gelöscht",date3,user));
+	messages.add(new Message("meinen Facebook-Account gelöscht",date3,user));
         messages.add(new Message("meinen Führerschein abgeben müssen",date,user));
         messages.add(new Message("meinen Hintern eingescannt",date2,user));
         messages.add(new Message("meinen Partner beim Sex gefilmt",date,user));
@@ -283,18 +283,18 @@ public class MessageHelper {
         messages.add(new Message("Nachrichten meines Partners ignoriert, um in Ruhe zocken zu können",date,user));
         messages.add(new Message("nachts gebadet",date2,user));
         messages.add(new Message("nackt geschlafen",date2,user));
-		messages.add(new Message("nackt im See / Freibad gebadet",date3,user));
+	messages.add(new Message("nackt im See / Freibad gebadet",date3,user));
         messages.add(new Message("Nackbilder einer bestimmten Person gesucht",date2,user));
         messages.add(new Message("Nacktbilder geschickt bekommen",date2,user));
         messages.add(new Message("Nacktbilder verschickt",date,user));
         messages.add(new Message("Nackbilder von mir selbst gemacht",date,user));
-		messages.add(new Message("Pfefferspray benutzt",date3,user));
+	messages.add(new Message("Pfefferspray benutzt",date3,user));
         messages.add(new Message("Pokémon gespielt",date2,user));
         messages.add(new Message("Pornohefte zuhause versteckt",date2,user));
         messages.add(new Message("rosa Klamotten getragen",date4, user));
         messages.add(new Message("Schadenfreude verspürt, als jemand anderem etwas schlimmes passiert ist",date2,user));
-		messages.add(new Message("schlafgewandelt",date3,user));
-		messages.add(new Message("Schnecken gegessen",date3,user));
+	messages.add(new Message("schlafgewandelt",date3,user));
+	messages.add(new Message("Schnecken gegessen",date3,user));
         messages.add(new Message("Sex auf einem Festival gehabt",date,user));
         messages.add(new Message("Sex auf einer Party gehabt",date,user));
         messages.add(new Message("Sex beim ersten Date gehabt",date4,user));
@@ -309,7 +309,7 @@ public class MessageHelper {
         messages.add(new Message("Sex in der Öffentlichkeit gehabt",date,user));
         messages.add(new Message("Sex in einem Auto gehabt",date,user));
         messages.add(new Message("Sex in einer Umkleidekabine gehabt",date,user));
-		messages.add(new Message("Sex mit einer verheirateten Person gehabt",date3,user));
+	messages.add(new Message("Sex mit einer verheirateten Person gehabt",date3,user));
         messages.add(new Message("Sex mit der Person links von mir gehabt",date,user));
         messages.add(new Message("Sex mit der Person rechts von mir gehabt",date,user));
         messages.add(new Message("Sex mit der/dem Ex gehabt",date,user));
@@ -344,7 +344,7 @@ public class MessageHelper {
         messages.add(new Message("unter der Dusche gesungen",date,user));
         messages.add(new Message("über einen Freund gedacht, dass dessen Eltern bei der Erziehung versagt haben",date2,user));
         messages.add(new Message("über einen Partnertausch nachgedacht",date2,user));
-		messages.add(new Message("über jemanden aus dieser Runde fantasiert",date3,user));
+	messages.add(new Message("über jemanden aus dieser Runde fantasiert",date3,user));
         messages.add(new Message("über mein Alter gelogen",date,user));
         messages.add(new Message("über meine Jungfräulichkeit gelogen",date4,user));
         messages.add(new Message("überlegt, mir ein Tattoo stechen zu lassen",date2,user));
@@ -353,31 +353,28 @@ public class MessageHelper {
         messages.add(new Message("versucht, mir die Haare selbst zu schneiden",date4, user));
         messages.add(new Message("versucht, einen Apfelkuchen zu vögeln",date2,user));
         messages.add(new Message("versucht, das Alphabet zu rülpsen",date,user));
-		messages.add(new Message("versucht, jemanden zu beeindrucken und mich dabei verletzt",date3,user));
+	messages.add(new Message("versucht, jemanden zu beeindrucken und mich dabei verletzt",date3,user));
         messages.add(new Message("versucht, Marihuana anzubauen",date,user));
         messages.add(new Message("versucht, mit einem gefälschten Geldschein zu bezahlen",date2,user));
         messages.add(new Message("versucht, mit meinem Partner einen Porno nachzuspielen",date2,user));
         messages.add(new Message("versucht, vor der Polizei wegzulaufen",date2,user));
         messages.add(new Message("Viagra genommen",date2,user));
         messages.add(new Message("vor 13 Uhr soviel getrunken, dass ich sturzbesoffen war",date2,user));
-		messages.add(new Message("vor der Schule gestanden, weil ich verpeilt hatte, dass Sonntag / Feiertag ist.",date3,user));
+	messages.add(new Message("vor der Schule gestanden, weil ich verpeilt hatte, dass Sonntag / Feiertag ist.",date3,user));
         messages.add(new Message("vor Lachen in die Hose gemacht",date4,user));
         messages.add(new Message("vorgegeben, homosexuell zu sein, um in Ruhe gelassen zu werden",date2,user));
         messages.add(new Message("wegen einer Spinne gekreischt",date2,user));
         messages.add(new Message("wegen eines Strafzettels verhandelt",date4, user));
         messages.add(new Message("wegen eines Katers geschwänzt",date2,user));
-		messages.add(new Message("Witze über Religion gemacht",date3,user));
+	messages.add(new Message("Witze über Religion gemacht",date3,user));
         messages.add(new Message("World of Warcraft gespielt",date2,user));
         messages.add(new Message("Würmer gegessen",date4,user));
         messages.add(new Message("zum \"Idiotentest\" gehen müssen",date2,user));
-
-
 
         return messages;
     }
 
     public static String getInputCommand(String message, String date, String author, String tableName) {
-        // INSERT INTO tableName VALUES('text','author','date_added');
         String statement = "INSERT INTO "+tableName+" VALUES('"+message+"','"+author+"','"+date+"');";
         return statement;
     }
